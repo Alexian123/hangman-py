@@ -1,6 +1,7 @@
 import time
 import os
 from getpass import getpass
+from sys import platform
 
 end = False
 word: str
@@ -10,7 +11,10 @@ mistake_count: int = 0
 
 
 def clear_screen():
-    return os.system('cls')  # only for windows
+    if platform in ["linux", "linux2", "darwin"]:
+        return os.system('clear')
+    elif platform == "win32":
+        return os.system('cls')
 
 
 def pause(seconds: int, msg=""):
@@ -140,7 +144,7 @@ def play():
         guess_next()
         if is_win():
             clear_screen()
-            print("\nCongratulatinos! You Won!\n")
+            print("\nCongratulations! You Won!\n")
             pause(2, "The word was: " + word)
             break
 
@@ -177,3 +181,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
