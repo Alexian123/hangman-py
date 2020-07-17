@@ -28,7 +28,7 @@ def get_word() -> str:
     print()  # new line
     if word == confirm and word != "":
         for c in confirm:
-            if not str(c).isalpha() and str(c) != ' ':
+            if not str(c).isalpha():
                 print("The word can't contain numbers, symbols or spaces!\n")
                 return get_word()
         return word
